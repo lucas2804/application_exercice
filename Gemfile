@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.2'
-gem 'sqlite3'
+gem 'mysql2', '0.3.18'
 gem 'puma', '~> 3.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'awesome_print'
 end
 
 group :development do

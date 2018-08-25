@@ -10,28 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180824162227) do
+ActiveRecord::Schema.define(version: 20180825101905) do
 
-  create_table "communes", force: :cascade do |t|
+  create_table "communes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer  "intercommunality_id"
     t.string   "name"
     t.string   "code_insee"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.index ["intercommunality_id"], name: "index_communes_on_intercommunality_id"
+    t.index ["intercommunality_id"], name: "index_communes_on_intercommunality_id", using: :btree
   end
 
-  create_table "intercommunalities", force: :cascade do |t|
+  create_table "intercommunalities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string   "name"
     t.string   "siren"
     t.string   "form"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "siren_id"
-    t.index ["siren_id"], name: "index_intercommunalities_on_siren_id"
+    t.string   "slug"
+    t.index ["siren_id"], name: "index_intercommunalities_on_siren_id", using: :btree
   end
 
-  create_table "streets", force: :cascade do |t|
+  create_table "streets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string   "title"
     t.integer  "from"
     t.integer  "to"
