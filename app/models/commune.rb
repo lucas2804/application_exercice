@@ -3,7 +3,7 @@ class Commune < ApplicationRecord
   has_many :communes_streets
   has_many :streets, through: :communes_streets
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :code_insee, presence: true, length: { minimum: 4 }
 
   scope :to_hash, -> { order(code_insee: :asc).pluck(:code_insee, :name).to_h }

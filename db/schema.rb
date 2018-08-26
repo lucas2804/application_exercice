@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180825101905) do
+ActiveRecord::Schema.define(version: 20180826072836) do
 
   create_table "communes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer  "intercommunality_id"
@@ -18,7 +18,18 @@ ActiveRecord::Schema.define(version: 20180825101905) do
     t.string   "code_insee"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "population"
     t.index ["intercommunality_id"], name: "index_communes_on_intercommunality_id", using: :btree
+  end
+
+  create_table "data_imports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.string   "filename"
+    t.datetime "failed_at"
+    t.datetime "imported_at"
+    t.datetime "processed_at"
+    t.text     "error_message", limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "intercommunalities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|

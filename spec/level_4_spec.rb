@@ -54,7 +54,6 @@ RSpec.describe "Level 4: manipulating data" do
 
     it "sums population" do
       metropole = Intercommunality.find_by(siren: "243400017")
-
       expect(metropole.population).to eq(449026)
     end
 
